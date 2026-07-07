@@ -217,7 +217,7 @@ body{
     <p>我是一个高一学生，十六岁。喜欢看小说，听音乐，打CS2。</p>
     <div class="about-links">
       <a href="https://space.bilibili.com/3461565495904503" target="_blank">📺 Bilibili</a>
-      <a href="#">💬 微信</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('wechat-modal').style.display='flex'">💬 微信</a>
     </div>
   </section>
 </div>
@@ -228,6 +228,14 @@ body{
     Powered by GitHub Pages · Theme: Custom
   </p>
 </footer>
+
+<div id="wechat-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:200;align-items:center;justify-content:center" onclick="this.style.display='none'">
+  <div style="background:#12121a;padding:2rem;border-radius:12px;text-align:center;border:1px solid #1e1e2e" onclick="event.stopPropagation()">
+    <img src="wechat.jpg" alt="微信二维码" style="max-width:250px;border-radius:8px">
+    <p style="color:#666;margin-top:1rem;font-size:.85rem">微信号：wxid_3nj45voaytwo12</p>
+    <p style="color:#444;margin-top:.5rem;font-size:.75rem">点击空白处关闭</p>
+  </div>
+</div>
 
 <script>
 document.querySelectorAll('.nav-links a').forEach(link=>{
