@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的第一篇文章 - 仇杨's Blog</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--text:#e0e0e0;--dim:#666;--accent:#6c5ce7;--accent2:#a29bfe;--glow:rgba(108,92,231,0.15)}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-size:1.2rem;font-weight:700;color:var(--accent2);text-decoration:none;letter-spacing:1px}
+.nav-logo span{color:var(--dim);font-weight:300}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:var(--dim);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:2rem;color:var(--accent2);text-decoration:none;font-size:.9rem}
+.back-btn:hover{text-decoration:underline}
+.article{max-width:700px;margin:0 auto;padding:100px 2rem 4rem}
+.article-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;font-size:.85rem;color:var(--dim)}
+.article-tag{background:rgba(108,92,231,0.15);color:var(--accent2);padding:.15rem .6rem;border-radius:4px;font-size:.75rem}
+.article h1{font-size:2rem;font-weight:700;margin-bottom:1rem;line-height:1.4}
+.article p{margin-bottom:1.2rem;color:#bbb;font-size:1.05rem}
+.article p:first-of-type{font-size:1.1rem;color:var(--text)}
+.footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--dim);font-size:.85rem}
+@media(max-width:640px){.article{padding:80px 1.5rem 3rem}.article h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">仇杨<span>.blog</span></a>
+    <div class="nav-links">
+      <a href="index.html">文章</a>
+      <a href="index.html#about">关于</a>
+    </div>
+  </div>
+</nav>
+
+<article class="article">
+  <a href="index.html" class="back-btn">← 返回首页</a>
+  <div class="article-meta">
+    <span class="article-tag">技术</span>
+    <time>2025-07-07</time>
+  </div>
+  <h1>我的第一篇文章</h1>
+  <p>欢迎来到我的博客！这是我的第一篇文章。搭建这个博客的过程比我想象的要简单得多。</p>
+  <p>以前觉得建网站很复杂，需要学 HTML、CSS、JavaScript，还要买服务器、域名。但现在有了 AI 工具，整个过程被大大简化了。</p>
+  <p>我用了不到一个小时就完成了：从零开始写代码、设计页面、部署上线。整个过程就像是和一个经验丰富的开发者搭档，你只需要告诉它你想做什么，它就能帮你实现。</p>
+  <p>这个博客虽然简单，但该有的都有：暗色主题、响应式布局、文章归档、个人介绍。最重要的是，它是我自己的空间，可以自由地记录想法和分享技术。</p>
+  <p>以后我会在这里分享更多技术心得和生活感悟，希望能帮到同样热爱技术的你。</p>
+  <p>感谢你读到这里，我们下次再见。</p>
+</article>
+
+<footer class="footer">
+  <p>© 2025 仇杨's Blog · 用 ❤️ 和 AI 构建</p>
+</footer>
+</body>
+</html>
