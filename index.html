@@ -214,7 +214,12 @@ body{
   <section id="music" class="music-box">
     <h3>🎵 正在听</h3>
     <p style="color:var(--dim);margin-bottom:1rem;font-size:.85rem">当前播放：晴天 - 周杰伦</p>
-    <iframe src="https://music.163.com/outchain/player?type=2?id=186016&auto=1&height=66" width="100%" height="80" frameborder="0" allowfullscreen="true"></iframe>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <audio controls id="bgm" style="width:100%;height:40px;border-radius:8px">
+        <source src="https://music.163.com/song/media/outer/url?id=186016.mp3" type="audio/mpeg">
+        你的浏览器不支持播放
+      </audio>
+    </div>
   </section>
 
   <section id="posts">
@@ -317,6 +322,13 @@ function addGuest(){
   document.getElementById('guest-list').prepend(item);
   document.getElementById('guest-name').value='';
   document.getElementById('guest-msg').value='';
+}
+
+const bgm=document.getElementById('bgm');
+if(bgm){
+  document.addEventListener('click',function(){
+    if(bgm.paused){bgm.play().catch(()=>{})}
+  },{once:true});
 }
 </script>
 </body>
