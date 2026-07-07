@@ -65,6 +65,11 @@ body{
   background:radial-gradient(circle,var(--glow) 0%,transparent 70%);
   pointer-events:none;
 }
+.hero-avatar{
+  width:100px;height:100px;border-radius:50%;
+  border:3px solid var(--accent);margin-bottom:1.5rem;
+  box-shadow:0 0 30px var(--glow);
+}
 .hero h1{
   font-size:3rem;font-weight:700;margin-bottom:1rem;
   background:linear-gradient(135deg,var(--text),var(--accent2));
@@ -170,6 +175,7 @@ body{
 </nav>
 
 <section class="hero">
+  <img src="OIP.jpg" alt="avatar" class="hero-avatar">
   <h1>Hi, I'm Fist 👋</h1>
   <p>记录技术、思考与生活。写代码，也写故事。</p>
   <div class="hero-tags">
