@@ -49,16 +49,24 @@ body{font-family:'Noto Sans SC','Segoe UI',sans-serif;background:var(--bg);color
   <a href="index.html" class="back-btn">← 返回首页</a>
   <div class="article-meta">
     <span class="article-tag">人物</span>
-    <time>2026-07-06</time>
+    <time>2026-07-07</time>
   </div>
   <h1>曼巴生平</h1>
   <img src="kobe.webp" alt="科比·布莱恩特">
+  <audio id="bgm" style="width:100%;margin-bottom:1.5rem;border-radius:8px" controls>
+    <source src="kobe-bg.mp3" type="audio/mpeg">
+  </audio>
   <p>科比·布莱恩特（Kobe Bryant）是一位杰出的美国职业篮球运动员，出生于1978年8月23日，于2020年1月26日不幸去世。</p>
   <p>他以其卓越的技艺和不懈的努力而闻名，职业生涯中为洛杉矶湖人队效力了20年，赢得了5次NBA总冠军。</p>
   <p>科比在2008年获得了NBA最有价值球员（MVP）称号，并在2007年、2008年和2012年帮助美国男篮夺得了奥运会金牌。</p>
   <p>科比的个人成就包括18次入选全明星赛和15次入选NBA最佳阵容。</p>
   <p>他的篮球精神和遗产将继续激励人们追求卓越。</p>
 </article>
+
+<script>
+const bgm=document.getElementById('bgm');
+if(bgm){bgm.play().catch(()=>{})}
+</script>
 
 <footer class="footer">
   <p>© 2026 仇杨's Blog · 用 ❤️ 和 AI 构建</p>
