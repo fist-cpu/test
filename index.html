@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fist's Blog - 个人博客</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;
+  --text:#e0e0e0;--dim:#666;--accent:#6c5ce7;--accent2:#a29bfe;
+  --glow:rgba(108,92,231,0.15);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans SC','Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.8;min-height:100vh;
+}
+
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:0 2rem;
+  transition:all .3s;
+}
+.nav-inner{
+  max-width:900px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;
+}
+.nav-logo{
+  font-size:1.2rem;font-weight:700;color:var(--accent2);
+  text-decoration:none;letter-spacing:1px;
+}
+.nav-logo span{color:var(--dim);font-weight:300}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{
+  color:var(--dim);text-decoration:none;font-size:.9rem;
+  transition:color .2s;position:relative;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:2px;background:var(--accent);transform:scaleX(0);
+  transition:transform .3s;
+}
+.nav-links a:hover::after{transform:scaleX(1)}
+
+.hero{
+  padding:120px 2rem 60px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,var(--glow) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero h1{
+  font-size:3rem;font-weight:700;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--text),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p{color:var(--dim);font-size:1.1rem;max-width:500px;margin:0 auto 2rem}
+.hero-tags{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.hero-tags span{
+  background:var(--card);border:1px solid var(--border);
+  padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--dim);
+}
+
+.container{max-width:900px;margin:0 auto;padding:2rem}
+
+.section-title{
+  font-size:1.4rem;font-weight:500;margin-bottom:2rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.section-title::before{
+  content:'';width:4px;height:1.4rem;
+  background:var(--accent);border-radius:2px;
+}
+
+.post-grid{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:4rem}
+
+.post-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:2rem;cursor:pointer;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.post-card:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(108,92,231,0.1);
+}
+.post-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  opacity:0;transition:opacity .3s;
+}
+.post-card:hover::before{opacity:1}
+.post-meta{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;font-size:.85rem;color:var(--dim)}
+.post-tag{
+  background:rgba(108,92,231,0.15);color:var(--accent2);
+  padding:.15rem .6rem;border-radius:4px;font-size:.75rem;
+}
+.post-card h2{font-size:1.3rem;font-weight:500;margin-bottom:.6rem;color:var(--text)}
+.post-card p{color:var(--dim);font-size:.95rem;line-height:1.7}
+.post-more{
+  display:inline-flex;align-items:center;gap:.4rem;
+  margin-top:1rem;color:var(--accent2);font-size:.85rem;
+}
+.post-more::after{content:'→';transition:transform .2s}
+.post-card:hover .post-more::after{transform:translateX(4px)}
+
+.about{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:2.5rem;margin-bottom:4rem;
+}
+.about h3{font-size:1.2rem;margin-bottom:1rem;color:var(--accent2)}
+.about p{color:var(--dim);margin-bottom:.8rem}
+.about-links{display:flex;gap:1rem;margin-top:1.5rem}
+.about-links a{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.4rem 1rem;border:1px solid var(--border);
+  border-radius:8px;color:var(--dim);text-decoration:none;
+  font-size:.85rem;transition:all .2s;
+}
+.about-links a:hover{border-color:var(--accent);color:var(--accent2)}
+
+.footer{
+  text-align:center;padding:3rem 2rem;
+  border-top:1px solid var(--border);color:var(--dim);font-size:.85rem;
+}
+
+.archive-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 0;border-bottom:1px solid var(--border);
+}
+.archive-item:last-child{border:none}
+.archive-date{color:var(--dim);font-size:.85rem;font-family:'JetBrains Mono',monospace}
+.archive-title{color:var(--text);text-decoration:none;transition:color .2s}
+.archive-title:hover{color:var(--accent2)}
+
+@media(max-width:640px){
+  .hero h1{font-size:2rem}
+  .nav-links{gap:1rem}
+  .post-card{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">fist<span>.blog</span></a>
+    <div class="nav-links">
+      <a href="#posts" class="active">文章</a>
+      <a href="#archive">归档</a>
+      <a href="#about">关于</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Hi, I'm Fist 👋</h1>
+  <p>记录技术、思考与生活。写代码，也写故事。</p>
+  <div class="hero-tags">
+    <span>🖥 技术</span>
+    <span>💡 思考</span>
+    <span>🎨 生活</span>
+    <span>📖 读书</span>
+  </div>
+</section>
+
+<div class="container">
+  <section id="posts">
+    <h2 class="section-title">最新文章</h2>
+    <div class="post-grid">
+      <article class="post-card">
+        <div class="post-meta">
+          <span class="post-tag">技术</span>
+          <time>2025-07-07</time>
+        </div>
+        <h2>用 AI 搭建个人博客的全过程</h2>
+        <p>从零开始，借助 AI 工具快速搭建一个美观、高效的个人博客网站。涵盖 GitHub Pages 部署、响应式设计等要点。</p>
+        <div class="post-more">阅读全文</div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-meta">
+          <span class="post-tag">思考</span>
+          <time>2025-07-05</time>
+        </div>
+        <h2>为什么程序员需要写作</h2>
+        <p>写作不仅是记录，更是一种深度思考的方式。通过输出倒逼输入，构建更完整的知识体系。</p>
+        <div class="post-more">阅读全文</div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-meta">
+          <span class="post-tag">技术</span>
+          <time>2025-07-03</time>
+        </div>
+        <h2>我用 Hermes Agent 自动化了 10 个日常工作流</h2>
+        <p>Hermes Agent 是一个强大的 AI 代理框架，支持持久记忆和技能创建。分享我如何用它提升开发效率。</p>
+        <div class="post-more">阅读全文</div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-meta">
+          <span class="post-tag">生活</span>
+          <time>2025-06-28</time>
+        </div>
+        <h2>程序员的一天：如何保持高效与健康</h2>
+        <p>分享我作为程序员的日常节奏，包括时间管理、运动习惯、护眼技巧和番茄工作法实践。</p>
+        <div class="post-more">阅读全文</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="archive">
+    <h2 class="section-title">文章归档</h2>
+    <div style="margin-bottom:4rem">
+      <div class="archive-item">
+        <span class="archive-date">2025-07-07</span>
+        <a href="#" class="archive-title">用 AI 搭建个人博客的全过程</a>
+      </div>
+      <div class="archive-item">
+        <span class="archive-date">2025-07-05</span>
+        <a href="#" class="archive-title">为什么程序员需要写作</a>
+      </div>
+      <div class="archive-item">
+        <span class="archive-date">2025-07-03</span>
+        <a href="#" class="archive-title">我用 Hermes Agent 自动化了 10 个日常工作流</a>
+      </div>
+      <div class="archive-item">
+        <span class="archive-date">2025-06-28</span>
+        <a href="#" class="archive-title">程序员的一天：如何保持高效与健康</a>
+      </div>
+      <div class="archive-item">
+        <span class="archive-date">2025-06-20</span>
+        <a href="#" class="archive-title">GitHub Pages 免费建站指南</a>
+      </div>
+      <div class="archive-item">
+        <span class="archive-date">2025-06-15</span>
+        <a href="#" class="archive-title">2025 年最值得关注的开源项目</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h3>关于我</h3>
+    <p>一个热爱技术的开发者，喜欢用代码解决实际问题。</p>
+    <p>目前在探索 AI 工具链、自动化和全栈开发。</p>
+    <p>业余时间喜欢写技术博客、读科幻小说、跑步。</p>
+    <div class="about-links">
+      <a href="#">📧 邮件</a>
+      <a href="#">🐙 GitHub</a>
+      <a href="#">🐦 Twitter</a>
+      <a href="#">📺 Bilibili</a>
+    </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <p>© 2025 Fist's Blog · 用 ❤️ 和 AI 构建</p>
+  <p style="margin-top:.5rem;font-size:.75rem;color:#444">
+    Powered by GitHub Pages · Theme: Custom
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-links a').forEach(link=>{
+  link.addEventListener('click',function(e){
+    document.querySelectorAll('.nav-links a').forEach(l=>l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+document.querySelectorAll('.post-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    alert('文章详情页面开发中...');
+  });
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.style.opacity='1';
+  });
+},{threshold:0.1});
+document.querySelectorAll('.post-card').forEach(c=>{
+  c.style.opacity='0';c.style.transition='opacity .6s';
+  observer.observe(c);
+});
+</script>
+</body>
+</html>
